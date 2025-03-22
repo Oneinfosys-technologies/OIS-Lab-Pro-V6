@@ -307,12 +307,67 @@ heroku config:set SESSION_SECRET=your_secure_session_secret</code></pre>
     </div>
 
     <div class="section">
-        <h2>Initial Admin Access</h2>
-        <p>After deployment, you can access the admin dashboard with:</p>
+        <h2>Access Levels and Authentication</h2>
+        
+        <h3>SuperAdmin Access</h3>
+        <p>SuperAdmin portal provides system-wide control and management:</p>
+        <ul>
+            <li><strong>Username:</strong> superadmin</li>
+            <li><strong>Password:</strong> superadmin123</li>
+            <li><strong>Login URL:</strong> /sa-login</li>
+        </ul>
+        
+        <h4>SuperAdmin Capabilities</h4>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Labs Management</td>
+                <td>Register and manage multiple laboratory facilities</td>
+            </tr>
+            <tr>
+                <td>Subscription Control</td>
+                <td>Manage subscription plans and billing</td>
+            </tr>
+            <tr>
+                <td>System Settings</td>
+                <td>Configure global parameters and integration settings</td>
+            </tr>
+        </table>
+
+        <h3>Admin Access</h3>
+        <p>Laboratory administrators can access the admin dashboard with:</p>
         <ul>
             <li><strong>Username:</strong> admin</li>
             <li><strong>Password:</strong> admin123</li>
+            <li><strong>Login URL:</strong> /admin</li>
         </ul>
+        
+        <h4>Admin Capabilities</h4>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Test Management</td>
+                <td>Configure and manage diagnostic tests</td>
+            </tr>
+            <tr>
+                <td>User Management</td>
+                <td>Manage lab staff and patient accounts</td>
+            </tr>
+            <tr>
+                <td>Booking Administration</td>
+                <td>Handle test bookings and update status</td>
+            </tr>
+            <tr>
+                <td>Report Generation</td>
+                <td>Create and manage test reports with AI insights</td>
+            </tr>
+        </table>
     </div>
 
     <div class="section">

@@ -6,20 +6,41 @@ OIS LabPro is a comprehensive laboratory management platform built with modern w
 
 ## Features
 
-- **User Authentication**: Secure login and registration system
+- **User Authentication**: Secure login and registration system with role-based access (User, Admin, SuperAdmin)
 - **Test Management**: Browse and book diagnostic tests
 - **Sample Collection Options**: Choose between lab visit or home collection
 - **Real-time Status Tracking**: Monitor the progress of your tests
 - **AI-Powered Insights**: Get intelligent analysis of your test results
 - **Secure Report Access**: View and download test reports with personalized recommendations
 - **Administrative Dashboard**: Manage tests, bookings, and generate reports
+- **SuperAdmin Portal**: Global system management and lab administration
+
+## Access Levels
+
+### SuperAdmin Features
+- Global system configuration and settings
+- Labs management across the platform
+- Subscription management
+- System-wide analytics and monitoring
+
+### Admin Features
+- Test management and configuration
+- User management for their assigned lab
+- Booking management and status updates
+- Report generation and insights configuration
+
+### Regular User Features
+- Book and track diagnostic tests
+- View and download test reports
+- Access AI-powered health insights
+- Manage profile and preferences
 
 ## Technology Stack
 
 - **Frontend**: React.js with TypeScript and Tailwind CSS
 - **Backend**: Node.js with Express
 - **Database**: PostgreSQL with Drizzle ORM
-- **Authentication**: Passport.js with local strategy
+- **Authentication**: Passport.js with role-based strategy
 - **AI Integration**: OpenAI API for test result analysis
 - **UI Components**: shadcn/ui components
 
@@ -31,8 +52,7 @@ OIS LabPro is a comprehensive laboratory management platform built with modern w
 - PostgreSQL database server
 - OpenAI API key (for AI insights feature)
 
-### Installation
-
+### Installation and Setup
 1. Clone the repository and install dependencies:
 ```bash
 git clone <repository-url> ois-labpro
@@ -62,8 +82,19 @@ npm run db:push
 npm run dev
 ```
 
-## API Documentation
+## Initial Access
 
+### SuperAdmin Access
+- Username: superadmin
+- Password: superadmin123
+- URL: /sa-login
+
+### Admin Access
+- Username: admin
+- Password: admin123
+- URL: /admin
+
+## API Documentation
 ### Authentication Endpoints
 - POST `/api/login`: Log in with username and password
 - POST `/api/register`: Create a new user account
@@ -93,14 +124,20 @@ npm run dev
 - PATCH `/api/admin/bookings/:id/status`: Update booking status
 - POST `/api/admin/reports`: Create a report for a booking
 
-## Initial Admin Access
+### SuperAdmin Endpoints
+- GET `/api/sa/labs`: Get all registered labs
+- POST `/api/sa/labs`: Register new lab
+- GET `/api/sa/subscriptions`: Get subscription details
+- PATCH `/api/sa/settings`: Update system settings
 
-After deployment, you can access the admin dashboard with:
-- Username: admin
-- Password: admin123
+### Admin Endpoints
+- GET `/api/admin/bookings`: Get all bookings
+- PATCH `/api/admin/bookings/:id/status`: Update booking status
+- POST `/api/admin/reports`: Create test reports
+- GET `/api/admin/users`: Manage lab users
+
 
 ## Troubleshooting
-
 1. **Database Connection Issues**: 
    - Ensure PostgreSQL server is running
    - Check environment variables
