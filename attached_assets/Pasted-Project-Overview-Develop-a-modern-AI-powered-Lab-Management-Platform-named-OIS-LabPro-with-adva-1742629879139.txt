@@ -1,0 +1,87 @@
+Project Overview:
+Develop a modern, AI-powered Lab Management Platform named "OIS LabPro" with advanced features for seamless diagnostic test management, real-time tracking, and smart reporting. The system must prioritize user experience, security, and scalability to compete with leading healthcare SaaS solutions.
+
+Core Features
+User Panel
+
+Intuitive dashboard for test booking, payment, and report access.
+
+Real-time status updates with color-coded tracking (grey → blue → dark blue → yellow → green).
+
+Test history, downloadable reports, and predictive health trends based on past results.
+
+Mobile-responsive design with optional progressive web app (PWA) support.
+
+Online Test Booking
+
+Search/filter tests by category (e.g., CBC, CRP) or symptoms.
+
+Home sample collection scheduling with GPS tracking for phlebotomists.
+
+Automated reminders (SMS/email) for appointments and report deadlines.
+
+Admin Panel
+
+Manage bookings, sample collection teams, and lab technicians.
+
+Custom header/footer upload for branded report templates.
+
+Bulk report uploads and AI-driven anomaly detection in test data.
+
+Super Admin Panel
+
+Multi-lab management (add/remove labs, assign admins).
+
+Global analytics dashboard with revenue, test volume, and regional trends.
+
+Advanced Reporting Engine
+Test-Specific PDF Generation
+
+Dynamic templates auto-populated with formulas/results (e.g., CBC = WBC+RBC+Hemoglobin; CRP = mg/L thresholds).
+
+AI-powered insights: Highlight abnormal values with contextual notes (e.g., "High platelet count: Consult a hematologist").
+
+Download Without Login
+
+Users retrieve reports via unique OIS-LAB-XXXXXX ID or mobile verification.
+
+Auto-expire download links after 72 hours for security.
+
+Innovative Additions to Compete in 2024
+Smart Features
+
+AI Chat Assistant: Answers user queries (e.g., "What does my CRP value mean?").
+
+Predictive Alerts: Flag potential health risks (e.g., "Consistent high glucose → diabetes risk").
+
+Integrations
+
+EHR/EMR integration (e.g., Epic, Cerner).
+
+Wearable sync (Fitbit/Apple Health) to correlate lab data with activity.
+
+Security & Compliance
+
+HIPAA/GDPR compliance, end-to-end encryption, and blockchain-based audit logs.
+
+Facial recognition or OTP for sensitive report access.
+
+Marketplace for Add-Ons
+
+Let labs offer bundled tests (e.g., "Senior Citizen Package") or partner with wellness apps.
+
+Modern UI/UX Requirements
+Figma Design: Sleek, minimalist interface with:
+
+Dark/light mode toggle.
+
+Interactive status timeline (drag to see progress).
+
+Data visualizations (e.g., trend graphs for repeat tests).
+
+Micro-Animations: Smooth transitions for notifications and report generation.
+
+Voice Search: "Book a cholesterol test for next Monday."
+
+Goal: Position OIS LabPro as the all-in-one solution for labs to streamline operations, enhance patient trust, and boost revenue through tech-driven healthcare.
+lovable logo
