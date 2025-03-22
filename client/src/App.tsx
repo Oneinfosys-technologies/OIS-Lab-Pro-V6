@@ -23,7 +23,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/auth" component={AuthPage} />
+      <Route path="/sa-login" component={SuperAdminLogin} />
       <ProtectedRoute path="/" component={HomePage} />
+      <ProtectedRoute path="/profile" component={ProfilePage} />
       <ProtectedRoute path="/book-test" component={BookTest} />
       <ProtectedRoute path="/test/:id" component={TestDetail} />
       <ProtectedRoute path="/my-reports" component={MyReports} />
@@ -31,6 +33,7 @@ function Router() {
       <Route path="/reports/download/:reportId" component={ReportDownload} />
       <ProtectedRoute path="/admin" component={AdminDashboard} roles={["admin", "superadmin"]} />
       <ProtectedRoute path="/admin/tests" component={TestManagement} roles={["admin", "superadmin"]} />
+      <ProtectedRoute path="/sa-dashboard" component={SuperAdminDashboard} roles={["superadmin"]} />
       <Route component={NotFound} />
     </Switch>
   );

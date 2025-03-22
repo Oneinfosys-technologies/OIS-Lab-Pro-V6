@@ -11,7 +11,9 @@ import {
   HeadphonesIcon, 
   LogOut,
   Users,
-  Settings
+  Settings,
+  UserCircle,
+  Building2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -26,6 +28,7 @@ export function Sidebar({ className, isMobile = false }: SidebarProps) {
   const [location] = useLocation();
 
   const isAdmin = user?.role === "admin" || user?.role === "superadmin";
+  const isSuperAdmin = user?.role === "superadmin";
 
   const handleLogout = () => {
     logoutMutation.mutate();
@@ -53,6 +56,11 @@ export function Sidebar({ className, isMobile = false }: SidebarProps) {
       icon: <History className="mr-3 h-5 w-5" />,
     },
     {
+      name: "Profile",
+      path: "/profile",
+      icon: <UserCircle className="mr-3 h-5 w-5" />,
+    },
+    {
       name: "Support",
       path: "/support",
       icon: <HeadphonesIcon className="mr-3 h-5 w-5" />,
@@ -78,6 +86,29 @@ export function Sidebar({ className, isMobile = false }: SidebarProps) {
     {
       name: "Settings",
       path: "/admin/settings",
+      icon: <Settings className="mr-3 h-5 w-5" />,
+    }
+  ];
+  
+  const superAdminMenuItems = [
+    {
+      name: "SuperAdmin Dashboard",
+      path: "/sa-dashboard",
+      icon: <Building2 className="mr-3 h-5 w-5" />,
+    },
+    {
+      name: "Labs Management",
+      path: "/sa-dashboard?tab=labs",
+      icon: <Building2 className="mr-3 h-5 w-5" />,
+    },
+    {
+      name: "Subscriptions",
+      path: "/sa-dashboard?tab=subscriptions",
+      icon: <FileText className="mr-3 h-5 w-5" />,
+    },
+    {
+      name: "System Settings",
+      path: "/sa-dashboard?tab=settings",
       icon: <Settings className="mr-3 h-5 w-5" />,
     }
   ];
@@ -130,6 +161,33 @@ export function Sidebar({ className, isMobile = false }: SidebarProps) {
                         className={cn(
                           "flex items-center p-3 text-base rounded-lg",
                           location === item.path 
+                            ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400"
+                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50"
+                        )}
+                      >
+                        {item.icon}
+                        {item.name}
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          
+          {isSuperAdmin && (
+            <>
+              <h3 className="mt-6 mb-2 px-3 text-sm font-medium text-slate-500 dark:text-slate-400">
+                SuperAdmin
+              </h3>
+              <ul className="space-y-1">
+                {superAdminMenuItems.map((item) => (
+                  <li key={item.path}>
+                    <Link href={item.path}>
+                      <a 
+                        className={cn(
+                          "flex items-center p-3 text-base rounded-lg",
+                          location.startsWith(item.path.split('?')[0])
                             ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400"
                             : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50"
                         )}
