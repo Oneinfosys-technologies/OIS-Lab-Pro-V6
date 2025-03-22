@@ -19,6 +19,7 @@ export const insertUserSchema = createInsertSchema(users).pick({
   fullName: true,
   email: true,
   phone: true,
+  role: true,
 });
 
 export const testCategories = pgTable("test_categories", {
