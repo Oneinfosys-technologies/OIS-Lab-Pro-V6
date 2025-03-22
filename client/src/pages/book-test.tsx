@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSearchParams } from "wouter";
+import { useLocation } from "wouter";
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { TestSearch } from "@/components/booking/test-search";
 import { BookingForm } from "@/components/booking/booking-form";
@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 export default function BookTest() {
-  const [params] = useSearchParams();
+  const [location] = useLocation();
   const [selectedTest, setSelectedTest] = useState<Test | null>(null);
   
   // Check if search query is present in URL to auto-focus on search
-  const showSearch = params?.get("search") === "true" || !selectedTest;
+  const showSearch = location.includes("search=true") || !selectedTest;
   
   const handleTestSelect = (test: Test) => {
     setSelectedTest(test);

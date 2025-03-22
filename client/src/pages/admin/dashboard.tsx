@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { Loader2, Search, Users, FlaskConical, Settings, BarChart4 } from "lucide-react";
+import { Loader2, Search, Users, TestTube, Settings, BarChart4 } from "lucide-react";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { TEST_STATUSES } from "@shared/schema";
 import { format } from "date-fns";
@@ -165,7 +165,7 @@ export default function AdminDashboard() {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center space-x-2">
-              <FlaskConical className="h-10 w-10 text-secondary-600 dark:text-secondary-400" />
+              <TestTube className="h-10 w-10 text-secondary-600 dark:text-secondary-400" />
               <div>
                 <p className="text-3xl font-bold">
                   {bookings?.filter(b => b.status === TEST_STATUSES.ANALYZING).length || 0}
