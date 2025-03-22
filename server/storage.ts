@@ -63,6 +63,13 @@ export interface IStorage {
   getUserReports(userId: number): Promise<Report[]>;
   createReport(report: InsertReport): Promise<Report>;
   
+  // Lab operations
+  getLabs(): Promise<Lab[]>;
+  getLab(id: number): Promise<Lab | undefined>;
+  createLab(lab: InsertLab): Promise<Lab>;
+  updateLabStatus(id: number, status: string): Promise<Lab>;
+  updateLabSubscription(id: number, plan: string, endDate: Date): Promise<Lab>;
+  
   // Session store
   sessionStore: session.Store;
   

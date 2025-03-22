@@ -9,7 +9,7 @@ export const users = pgTable("users", {
   fullName: text("full_name").notNull(),
   email: text("email").notNull().unique(),
   phone: text("phone"),
-  role: text("role").notNull().default("user"),
+  role: text("role", { enum: ["user", "admin", "superadmin"] }).notNull().default("user"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -137,3 +137,36 @@ export const COLLECTION_TYPES = {
   HOME: "home",
   LAB: "lab",
 };
+
+// Lab management
+export const labs = pgTable("labs", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  address: text("address").notNull(),
+  phone: text("phone").notNull(),
+  email: text("email").notNull(),
+  licenseNumber: text("license_number").notNull(),
+  status: text("status", { enum: ["active", "inactive", "pending"] }).notNull().default("pending"),
+  subscriptionPlan: text("subscription_plan", { enum: ["basic", "standard", "premium"] }).notNull().default("basic"),
+  subscriptionStartDate: timestamp("subscription_start_date").defaultNow(),
+  subscriptionEndDate: timestamp("subscription_end_date"),
+  createdAt: timestamp("created_at").defaultNow(),
+  createdBy: integer("created_by").notNull(), // Reference to superadmin who created the lab
+});
+
+export const insertLabSchema = createInsertSchema(labs).pick({
+  name: true,
+  address: true,
+  phone: true,
+  email: true,
+  licenseNumber: true,
+  status: true,
+  subscriptionPlan: true,
+  subscriptionStartDate: true,
+  subscriptionEndDate: true,
+  createdBy: true,
+});
+
+// Type for labs
+export type Lab = typeof labs.$inferSelect;
+export type InsertLab = z.infer<typeof insertLabSchema>;
