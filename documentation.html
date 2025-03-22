@@ -519,6 +519,117 @@ heroku config:set SESSION_SECRET=your_secure_session_secret</code></pre>
         </ol>
     </div>
 
+    <div class="section">
+        <h2>Project Structure</h2>
+        <h3>Server Files</h3>
+        <table>
+            <tr>
+                <th>File</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><code>server/index.ts</code></td>
+                <td>Main server entry point, sets up Express app, middleware, and error handling</td>
+            </tr>
+            <tr>
+                <td><code>server/auth.ts</code></td>
+                <td>Handles user authentication using Passport.js, session management, and login/register routes</td>
+            </tr>
+            <tr>
+                <td><code>server/db.ts</code></td>
+                <td>Database configuration and connection setup using Drizzle ORM with PostgreSQL</td>
+            </tr>
+            <tr>
+                <td><code>server/routes.ts</code></td>
+                <td>API route handlers for tests, bookings, reports, and admin functionality</td>
+            </tr>
+            <tr>
+                <td><code>server/storage.ts</code></td>
+                <td>Data access layer implementing storage operations for all entities</td>
+            </tr>
+            <tr>
+                <td><code>server/openai.ts</code></td>
+                <td>OpenAI integration for generating AI-powered insights from test results</td>
+            </tr>
+            <tr>
+                <td><code>server/vite.ts</code></td>
+                <td>Development server configuration for Vite and static file serving</td>
+            </tr>
+        </table>
+
+        <h3>Client Files</h3>
+        <table>
+            <tr>
+                <th>File</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><code>client/src/App.tsx</code></td>
+                <td>Root React component with routing setup and providers</td>
+            </tr>
+            <tr>
+                <td><code>client/src/pages/*</code></td>
+                <td>React components for different pages (auth, home, tests, reports, admin)</td>
+            </tr>
+            <tr>
+                <td><code>client/src/components/*</code></td>
+                <td>Reusable UI components built with shadcn/ui and Tailwind CSS</td>
+            </tr>
+            <tr>
+                <td><code>client/src/hooks/*</code></td>
+                <td>Custom React hooks for auth, theme, and API data fetching</td>
+            </tr>
+            <tr>
+                <td><code>client/src/lib/*</code></td>
+                <td>Utility functions, API client, and helper code</td>
+            </tr>
+        </table>
+
+        <h3>Shared Files</h3>
+        <table>
+            <tr>
+                <th>File</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><code>shared/schema.ts</code></td>
+                <td>Database schema definitions, TypeScript types, and validation using Drizzle and Zod</td>
+            </tr>
+        </table>
+
+        <h3>Configuration Files</h3>
+        <table>
+            <tr>
+                <th>File</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><code>package.json</code></td>
+                <td>Project dependencies and npm scripts</td>
+            </tr>
+            <tr>
+                <td><code>tsconfig.json</code></td>
+                <td>TypeScript compiler configuration</td>
+            </tr>
+            <tr>
+                <td><code>tailwind.config.ts</code></td>
+                <td>Tailwind CSS configuration with shadcn/ui preset</td>
+            </tr>
+            <tr>
+                <td><code>drizzle.config.ts</code></td>
+                <td>Drizzle ORM configuration for database migrations</td>
+            </tr>
+            <tr>
+                <td><code>theme.json</code></td>
+                <td>UI theme configuration for light and dark modes</td>
+            </tr>
+            <tr>
+                <td><code>.replit</code></td>
+                <td>Replit-specific configuration for development and deployment</td>
+            </tr>
+        </table>
+    </div>
+
     <footer>
         <p>&copy; 2025 OIS LabPro. All rights reserved.</p>
     </footer>
