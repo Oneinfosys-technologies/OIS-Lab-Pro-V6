@@ -15,6 +15,9 @@ import ReportView from "@/pages/report-view";
 import ReportDownload from "@/pages/report-download";
 import AdminDashboard from "@/pages/admin/dashboard";
 import TestManagement from "@/pages/admin/test-management";
+import ProfilePage from "@/pages/profile-page";
+import SuperAdminLogin from "@/pages/sa-login";
+import SuperAdminDashboard from "@/pages/sa-dashboard";
 
 function Router() {
   return (

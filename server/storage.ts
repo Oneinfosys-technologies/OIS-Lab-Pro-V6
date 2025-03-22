@@ -652,6 +652,62 @@ export class DatabaseStorage implements IStorage {
     return newReport;
   }
   
+  // Lab operations
+  async getLabs(): Promise<Lab[]> {
+    return await db.select().from(labs);
+  }
+  
+  async getLab(id: number): Promise<Lab | undefined> {
+    const [lab] = await db.select().from(labs).where(eq(labs.id, id));
+    return lab;
+  }
+  
+  async createLab(lab: InsertLab): Promise<Lab> {
+    const [newLab] = await db
+      .insert(labs)
+      .values({
+        ...lab,
+        status: lab.status || "pending",
+        subscriptionPlan: lab.subscriptionPlan || "basic",
+        subscriptionStartDate: lab.subscriptionStartDate || new Date(),
+        subscriptionEndDate: lab.subscriptionEndDate || add(new Date(), { months: 1 }),
+        createdAt: new Date()
+      })
+      .returning();
+    return newLab;
+  }
+  
+  async updateLabStatus(id: number, status: string): Promise<Lab> {
+    const [updatedLab] = await db
+      .update(labs)
+      .set({ status })
+      .where(eq(labs.id, id))
+      .returning();
+    
+    if (!updatedLab) {
+      throw new Error(`Lab with id ${id} not found`);
+    }
+    
+    return updatedLab;
+  }
+  
+  async updateLabSubscription(id: number, plan: string, endDate: Date): Promise<Lab> {
+    const [updatedLab] = await db
+      .update(labs)
+      .set({ 
+        subscriptionPlan: plan, 
+        subscriptionEndDate: endDate 
+      })
+      .where(eq(labs.id, id))
+      .returning();
+    
+    if (!updatedLab) {
+      throw new Error(`Lab with id ${id} not found`);
+    }
+    
+    return updatedLab;
+  }
+  
   async initializeData(): Promise<void> {
     // Create admin user if it doesn't exist
     const adminUser = await this.getUserByUsername("admin");
@@ -659,7 +715,7 @@ export class DatabaseStorage implements IStorage {
     if (!adminUser) {
       await this.createUser({
         username: "admin",
-        password: "$2b$10$uqpxOh7y14eZYY3wJ0AH/OhP6vOgY4AW7GaXbvRBYPm1OHZF9lT5q", // "admin123"
+        password: "$2b$10$TdFmrsUG4f9i9ynGkpYYeeBTxP8E4UOsCXH7XyVYELZN4ghmYKgsa", // "admin123"
         email: "admin@oislabpro.com",
         fullName: "System Administrator",
         role: "admin",
@@ -668,6 +724,24 @@ export class DatabaseStorage implements IStorage {
       
       console.log("Created admin user with credentials:");
       console.log("Username: admin");
+      console.log("Password: admin123");
+    }
+    
+    // Create superadmin user if it doesn't exist
+    const superadminUser = await this.getUserByUsername("superadmin");
+    
+    if (!superadminUser) {
+      await this.createUser({
+        username: "superadmin",
+        password: "$2b$10$TdFmrsUG4f9i9ynGkpYYeeBTxP8E4UOsCXH7XyVYELZN4ghmYKgsa", // "admin123"
+        email: "superadmin@oislabpro.com",
+        fullName: "Super Administrator",
+        role: "superadmin",
+        phone: null
+      });
+      
+      console.log("Created superadmin user with credentials:");
+      console.log("Username: superadmin");
       console.log("Password: admin123");
     }
     
