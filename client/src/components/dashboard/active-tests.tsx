@@ -157,20 +157,3 @@ export function ActiveTests() {
     </Card>
   );
 }
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-export function ActiveTests() {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Active Tests Overview</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {/* Add active tests list */}
-          <p className="text-muted-foreground">No active tests found.</p>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
